@@ -28,6 +28,11 @@
     // /delete-property/ ignore-modifiers;
 };
 
+&lt {
+    flavor = "hold-preferred";
+    quick-tap-ms = <150>;
+};
+
 / {
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
@@ -78,16 +83,6 @@
     };
 
     behaviors {
-        hthp: hthp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HTHP";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <180>;
-        };
-
         hr: hr {
             compatible = "zmk,behavior-hold-tap";
             label = "HR";
@@ -119,10 +114,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&trans  &kp Q  &kp W  &kp E     &kp R          &kp T        &kp Y          &kp U              &kp I      &kp O    &kp P          &trans
-&trans  &kp A  &kp S  &kp D     &kp F          &kp G        &kp H          &kp J              &kp K      &kp L    &kp SEMICOLON  &trans
-&trans  &kp Z  &kp X  &kp C     &kp V          &kp B        &kp N          &kp M              &kp COMMA  &kp DOT  &kp FSLH       &trans
-                      &kp LGUI  &hthp 2 SPACE  &hthp 1 TAB  &hthp 1 ENTER  &hthp 2 BACKSPACE  &sftcap
+&trans  &kp Q  &kp W  &kp E     &kp R        &kp T      &kp Y        &kp U            &kp I      &kp O    &kp P          &trans
+&trans  &kp A  &kp S  &kp D     &kp F        &kp G      &kp H        &kp J            &kp K      &kp L    &kp SEMICOLON  &trans
+&trans  &kp Z  &kp X  &kp C     &kp V        &kp B      &kp N        &kp M            &kp COMMA  &kp DOT  &kp FSLH       &trans
+                      &kp LGUI  &lt 2 SPACE  &lt 1 TAB  &lt 1 ENTER  &lt 2 BACKSPACE  &sftcap
             >;
         };
 
