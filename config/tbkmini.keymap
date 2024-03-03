@@ -81,7 +81,7 @@
         lthp: lthp {
             compatible = "zmk,behavior-hold-tap";
             label = "LTHP";
-            bindings = <&mo>, <&kp>;
+            bindings = <&sl>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -119,10 +119,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&trans  &kp Q           &kp W           &kp E        &kp R             &kp T        &kp Y          &kp U              &kp I        &kp O            &kp P                    &trans
-&trans  &hr LEFT_GUI A  &hr LEFT_ALT S  &hr LCTRL D  &hr LEFT_SHIFT F  &kp G        &kp H          &hr RIGHT_SHIFT J  &hr RCTRL K  &hr RIGHT_ALT L  &hr RIGHT_GUI SEMICOLON  &trans
-&trans  &kp Z           &kp X           &kp C        &kp V             &kp B        &kp N          &kp M              &kp COMMA    &kp DOT          &kp FSLH                 &trans
-                                        &kp LGUI     &lthp 2 SPACE     &lthp 1 TAB  &lthp 1 ENTER  &lthp 2 BACKSPACE  &sftcap
+&trans  &kp Q  &kp W  &kp E     &kp R          &kp T        &kp Y          &kp U              &kp I      &kp O    &kp P          &trans
+&trans  &kp A  &kp S  &kp D     &kp F          &kp G        &kp H          &kp J              &kp K      &kp L    &kp SEMICOLON  &trans
+&trans  &kp Z  &kp X  &kp C     &kp V          &kp B        &kp N          &kp M              &kp COMMA  &kp DOT  &kp FSLH       &trans
+                      &kp LGUI  &lthp 2 SPACE  &lthp 1 TAB  &lthp 1 ENTER  &lthp 2 BACKSPACE  &sftcap
             >;
         };
 
