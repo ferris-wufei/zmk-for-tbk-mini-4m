@@ -78,10 +78,10 @@
     };
 
     behaviors {
-        hpsl: hpsl {
+        hthp: hthp {
             compatible = "zmk,behavior-hold-tap";
-            label = "HPSL";
-            bindings = <&sl>, <&kp>;
+            label = "HTHP";
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -122,7 +122,7 @@
 &trans  &kp Q  &kp W  &kp E     &kp R          &kp T        &kp Y          &kp U              &kp I      &kp O    &kp P          &trans
 &trans  &kp A  &kp S  &kp D     &kp F          &kp G        &kp H          &kp J              &kp K      &kp L    &kp SEMICOLON  &trans
 &trans  &kp Z  &kp X  &kp C     &kp V          &kp B        &kp N          &kp M              &kp COMMA  &kp DOT  &kp FSLH       &trans
-                      &kp LGUI  &hpsl 2 SPACE  &hpsl 1 TAB  &hpsl 1 ENTER  &hpsl 2 BACKSPACE  &sftcap
+                      &kp LGUI  &hthp 2 SPACE  &hthp 1 TAB  &hthp 1 ENTER  &hthp 2 BACKSPACE  &sftcap
             >;
         };
 
@@ -134,10 +134,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp N1    &kp N2    &kp N3     &kp N4     &kp N5   &kp N6        &kp N7              &kp N8            &kp N9         &kp N0  &trans
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &kp ESC  &kp LEFT      &kp DOWN            &kp UP            &kp RIGHT      &trans  &trans
-&trans  &kp F1    &kp F2    &kp F3     &kp F4     &kp F12  &kp LG(LEFT)  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &trans  &trans
-                            &trans     &mo 3      &trans   &trans        &mo 3               &trans
+&trans  &kp N1        &kp N2        &kp N3     &kp N4          &kp N5   &kp N6        &kp N7              &kp N8            &kp N9         &kp N0  &trans
+&trans  &sk LEFT_GUI  &sk LEFT_ALT  &sk LCTRL  &sk LEFT_SHIFT  &kp ESC  &kp LEFT      &kp DOWN            &kp UP            &kp RIGHT      &trans  &trans
+&trans  &kp F1        &kp F2        &kp F3     &kp F4          &kp F12  &kp LG(LEFT)  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &trans  &trans
+                                    &trans     &mo 3           &trans   &trans        &mo 3               &trans
             >;
         };
 
@@ -149,10 +149,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL        &kp AT    &kp HASH       &kp DLLR   &kp PRCNT        &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR       &kp RPAR           &trans
-&trans  &kp LGUI        &kp LALT  &kp LCTRL      &kp LSHFT  &kp ESC          &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE       &kp APOS           &trans
-&trans  &kp LEFT_BRACE  &kp LBKT  &kp LG(LA(C))  &kp RBKT   &kp RIGHT_BRACE  &kp EQUAL  &kp UNDER  &kp TILDE     &kp BACKSLASH  &kp DOUBLE_QUOTES  &trans
-                                  &trans         &trans     &trans           &trans     &trans     &trans
+&trans  &kp EXCL        &kp AT        &kp HASH       &kp DLLR        &kp PRCNT        &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR       &kp RPAR           &trans
+&trans  &sk LEFT_GUI    &sk LEFT_ALT  &sk LCTRL      &sk LEFT_SHIFT  &kp ESC          &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE       &kp APOS           &trans
+&trans  &kp LEFT_BRACE  &kp LBKT      &kp LG(LA(C))  &kp RBKT        &kp RIGHT_BRACE  &kp EQUAL  &kp UNDER  &kp TILDE     &kp BACKSLASH  &kp DOUBLE_QUOTES  &trans
+                                      &trans         &trans          &trans           &trans     &trans     &trans
             >;
         };
 
