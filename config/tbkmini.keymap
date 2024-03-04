@@ -80,6 +80,18 @@
             key-positions = <30 31>;
             timeout-ms = <30>;
         };
+
+        left_par {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <16 17>;
+            timeout-ms = <30>;
+        };
+
+        right_par {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <18 19>;
+            timeout-ms = <30>;
+        };
     };
 
     behaviors {
