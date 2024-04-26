@@ -39,12 +39,6 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_esc {
-            timeout-ms = <30>;
-            key-positions = <14 15>;
-            bindings = <&kp ESC>;
-        };
-
         backslash {
             bindings = <&kp BACKSLASH>;
             key-positions = <4 17>;
@@ -92,12 +86,60 @@
             key-positions = <18 19>;
             timeout-ms = <30>;
         };
+
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <3 4>;
+            timeout-ms = <30>;
+        };
+
+        back {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <7 8>;
+            timeout-ms = <30>;
+        };
+
+        del {
+            bindings = <&kp DELETE>;
+            key-positions = <8 9>;
+            timeout-ms = <30>;
+        };
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <3 2>;
+            timeout-ms = <30>;
+        };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <14 15>;
+            timeout-ms = <30>;
+        };
+
+        repeat {
+            bindings = <&kp C_REPEAT>;
+            key-positions = <15 16>;
+            timeout-ms = <30>;
+        };
+
+        copy {
+            bindings = <&kp LG(C)>;
+            key-positions = <27 26>;
+            timeout-ms = <30>;
+        };
+
+        paste {
+            bindings = <&kp LG(V)>;
+            key-positions = <27 28>;
+            timeout-ms = <30>;
+        };
     };
 
     behaviors {
-        hr: hr {
+        hm: hm {
             compatible = "zmk,behavior-hold-tap";
-            label = "HR";
+            label = "HM";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -107,11 +149,32 @@
             retro-tap;
         };
 
-        sftcap: sftcap {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SFTCAP";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp CAPSLOCK>;
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <36 37 38 39 40 41 9 21 10 22 34 33 32 20 8 7 19 31 30 18 6 5 17 29 28 27 26 25 1 2 3 4>;
+        };
+
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <1 13 25 26 14 2 3 15 27 28 16 4 5 17 29 30 6 18 36 37 37 38 39 40 41 7 8 9 10 31 32 33 34>;
         };
     };
 
@@ -126,14 +189,14 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&trans  &kp Q  &kp W  &kp E     &kp R        &kp T      &kp Y        &kp U            &kp I      &kp O    &kp P          &trans
-&trans  &kp A  &kp S  &kp D     &kp F        &kp G      &kp H        &kp J            &kp K      &kp L    &kp SEMICOLON  &trans
-&trans  &kp Z  &kp X  &kp C     &kp V        &kp B      &kp N        &kp M            &kp COMMA  &kp DOT  &kp FSLH       &trans
-                      &kp LGUI  &lt 2 SPACE  &lt 1 TAB  &lt 1 ENTER  &lt 2 BACKSPACE  &sftcap
+&trans  &kp Q            &kp W            &kp E         &kp R              &kp T      &kp Y      &kp U               &kp I            &kp O             &kp P                &trans
+&trans  &hml LEFT_GUI A  &hml LEFT_ALT S  &hml LCTRL D  &hml LEFT_SHIFT F  &kp G      &kp H      &hmr RIGHT_SHIFT J  &hmr RCTRL K     &hmr RIGHT_ALT L  &hmr RIGHT_GUI SEMI  &trans
+&trans  &kp Z            &kp X            &kp C         &kp V              &kp B      &kp N      &kp M               &kp COMMA        &kp DOT           &kp FSLH             &trans
+                                          &kp LEFT_GUI  &lt 2 SPACE        &lt 1 TAB  &kp ENTER  &lt 2 BACKSPACE     &kp RIGHT_SHIFT
             >;
         };
 
-        number {
+        num {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -141,14 +204,14 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp N1        &kp N2        &kp N3     &kp N4          &kp N5   &kp N6        &kp N7              &kp N8            &kp N9         &kp N0  &trans
-&trans  &sk LEFT_GUI  &sk LEFT_ALT  &sk LCTRL  &sk LEFT_SHIFT  &kp ESC  &kp LEFT      &kp DOWN            &kp UP            &kp RIGHT      &trans  &trans
-&trans  &kp F1        &kp F2        &kp F3     &kp F4          &kp F12  &kp LG(LEFT)  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &trans  &trans
-                                    &trans     &mo 3           &trans   &trans        &mo 3               &trans
+&trans  &kp N1        &kp N2        &kp N3     &kp N4          &kp N5        &kp N6        &kp N7              &kp N8            &kp N9         &kp N0   &trans
+&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LCTRL  &kp LEFT_SHIFT  &kp CAPSLOCK  &kp LEFT      &kp DOWN            &kp UP            &kp RIGHT      &trans   &trans
+&trans  &kp F1        &kp F2        &kp F3     &kp F4          &kp F5        &kp LG(LEFT)  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &kp F12  &trans
+                                    &trans     &mo 3           &trans        &trans        &mo 3               &trans
             >;
         };
 
-        symbol {
+        sym {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -157,13 +220,13 @@
 
             bindings = <
 &trans  &kp EXCL        &kp AT        &kp HASH       &kp DLLR        &kp PRCNT        &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR       &kp RPAR           &trans
-&trans  &sk LEFT_GUI    &sk LEFT_ALT  &sk LCTRL      &sk LEFT_SHIFT  &kp ESC          &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE       &kp APOS           &trans
+&trans  &kp LEFT_GUI    &kp LEFT_ALT  &kp LCTRL      &kp LEFT_SHIFT  &kp CAPSLOCK     &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE       &kp APOS           &trans
 &trans  &kp LEFT_BRACE  &kp LBKT      &kp LG(LA(C))  &kp RBKT        &kp RIGHT_BRACE  &kp EQUAL  &kp UNDER  &kp TILDE     &kp BACKSLASH  &kp DOUBLE_QUOTES  &trans
                                       &trans         &trans          &trans           &trans     &trans     &trans
             >;
         };
 
-        function {
+        fun {
             bindings = <
 &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans       &trans
 &trans  &trans        &trans        &kp C_VOLUME_UP    &trans        &trans        &trans  &trans  &trans  &trans  &trans       &trans
