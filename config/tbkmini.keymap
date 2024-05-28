@@ -83,6 +83,12 @@
             key-positions = <27 28>;
             timeout-ms = <30>;
         };
+
+        slash {
+            bindings = <&kp SLASH>;
+            key-positions = <18 7>;
+            timeout-ms = <30>;
+        };
     };
 
     behaviors {
