@@ -18,23 +18,20 @@
 #define BT3 BT_SEL 3
 #define BT4 BT_SEL 4
 
-&mt { retro-tap; };
-
-&sk {
-    //release-after-ms = <2000>;
-
-    quick-release;
-
-    // /delete-property/ ignore-modifiers;
-};
-
 &lt {
     flavor = "hold-preferred";
     quick-tap-ms = <150>;
 };
 
 / {
-    conditional_layers { compatible = "zmk,conditional-layers"; };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        bt {
+            if-layers = <1 2>;
+            then-layer = <4>;
+        };
+    };
 
     combos {
         compatible = "zmk,combos";
@@ -42,12 +39,6 @@
         backslash {
             bindings = <&kp BACKSLASH>;
             key-positions = <4 17>;
-            timeout-ms = <30>;
-        };
-
-        pipe {
-            bindings = <&kp PIPE>;
-            key-positions = <6 18>;
             timeout-ms = <30>;
         };
 
@@ -186,10 +177,19 @@
 
         fun {
             bindings = <
-&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6        &kp F7  &kp F8  &kp F9  &kp F10  &trans
-&trans  &kp F11       &kp F12       &trans        &bt BT_CLR    &bt BT_CLR_ALL  &kp C_VOL_UP  &trans  &trans  &trans  &trans   &trans
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp C_VOL_DN  &trans  &trans  &trans  &trans   &trans
-                                    &trans        &trans        &trans          &trans        &trans  &trans
+&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5  &kp F6        &kp F7  &kp F8  &kp F9  &kp F10  &trans
+&trans  &kp F11  &kp F12  &trans  &trans  &trans  &kp C_VOL_UP  &trans  &trans  &trans  &trans   &trans
+&trans  &trans   &trans   &trans  &trans  &trans  &kp C_VOL_DN  &trans  &trans  &trans  &trans   &trans
+                          &trans  &trans  &trans  &trans        &trans  &trans
+            >;
+        };
+
+        bt {
+            bindings = <
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &bt BT_CLR    &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
+                                    &trans        &trans        &trans          &trans  &trans  &trans
             >;
         };
     };
